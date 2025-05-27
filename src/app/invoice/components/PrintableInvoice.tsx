@@ -22,6 +22,7 @@ type PrintableInvoiceProps = {
   calculateTotal: () => number;
 };
 
+// Make sure the ref is properly forwarded
 const PrintableInvoice = forwardRef<HTMLDivElement, PrintableInvoiceProps>(
   ({ formValues, products, calculateSubtotal, calculateTotal }, ref) => {
     return (
