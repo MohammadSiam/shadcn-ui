@@ -26,6 +26,7 @@ const PrintableInvoice = forwardRef<HTMLDivElement, PrintableInvoiceProps>(
   ({ formValues, products, calculateSubtotal, calculateTotal }, ref) => {
     return (
       <div ref={ref} className="p-6 bg-white rounded-lg shadow-sm">
+        {/* Header */}
         <div className="flex justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold">INVOICE</h2>
@@ -40,12 +41,14 @@ const PrintableInvoice = forwardRef<HTMLDivElement, PrintableInvoiceProps>(
           </div>
         </div>
 
+        {/* Customer Info */}
         <div className="mb-8">
           <h3 className="font-bold mb-2">Bill To:</h3>
-          <p>{formValues.customerName}</p>
-          <p>{formValues.customerEmail}</p>
+          <p>{formValues.customerName || "Customer Name"}</p>
+          <p>{formValues.customerEmail || "customer@example.com"}</p>
         </div>
 
+        {/* Products Table */}
         <table className="w-full mb-8">
           <thead>
             <tr className="border-b">
@@ -71,7 +74,8 @@ const PrintableInvoice = forwardRef<HTMLDivElement, PrintableInvoiceProps>(
           </tbody>
         </table>
 
-        <div className="flex justify-end w-full">
+        {/* Totals */}
+        <div className="flex justify-end">
           <div className="w-1/3">
             <div className="flex justify-between mb-2">
               <span>Subtotal:</span>
@@ -93,6 +97,7 @@ const PrintableInvoice = forwardRef<HTMLDivElement, PrintableInvoiceProps>(
           </div>
         </div>
 
+        {/* Footer */}
         <div className="mt-8 pt-8 border-t text-center text-gray-500">
           <p>Thank you for your business!</p>
         </div>

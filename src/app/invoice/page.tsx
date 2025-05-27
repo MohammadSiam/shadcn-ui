@@ -90,16 +90,132 @@ export default function InvoicePage() {
       <html>
         <head>
           <title>${documentTitle}</title>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
-            body { font-family: Arial, sans-serif; }
-            .invoice-container { padding: 20px; }
-            table { width: 100%; border-collapse: collapse; }
-            th, td { padding: 8px; text-align: left; }
-            th { border-bottom: 1px solid #ddd; }
-            td { border-bottom: 1px solid #eee; }
-            .text-right { text-align: right; }
+            /* Reset and base styles */
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+            
+            body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              color: #333;
+              background: white;
+            }
+            
+            /* Invoice container */
+            .invoice-container {
+              padding: 30px;
+              max-width: 800px;
+              margin: 0 auto;
+            }
+            
+            /* Header section */
+            .flex {
+              display: flex;
+            }
+            
+            .justify-between {
+              justify-content: space-between;
+            }
+            
+            .mb-8 {
+              margin-bottom: 24px;
+            }
+            
+            .text-2xl {
+              font-size: 24px;
+            }
+            
+            .font-bold {
+              font-weight: bold;
+            }
+            
+            .text-right {
+              text-align: right;
+            }
+            
+            .text-gray-500 {
+              color: #6b7280;
+            }
+            
+            /* Table styles */
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 24px;
+            }
+            
+            th, td {
+              padding: 12px 8px;
+              text-align: left;
+            }
+            
+            th {
+              border-bottom: 1px solid #ddd;
+              font-weight: bold;
+            }
+            
+            td {
+              border-bottom: 1px solid #eee;
+            }
+            
+            th:last-child, td:last-child {
+              text-align: right;
+            }
+            
+            /* Totals section */
+            .w-1\\/3 {
+              width: 33.333333%;
+              margin-left: auto;
+            }
+            
+            .flex.justify-between {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 8px;
+            }
+            
+            .text-lg {
+              font-size: 18px;
+            }
+            
+            /* Footer */
+            .mt-8 {
+              margin-top: 24px;
+            }
+            
+            .pt-8 {
+              padding-top: 24px;
+            }
+            
+            .border-t {
+              border-top: 1px solid #eee;
+            }
+            
+            .text-center {
+              text-align: center;
+            }
+            
+            /* Print-specific styles */
             @media print {
-              body { -webkit-print-color-adjust: exact; }
+              body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              @page {
+                size: A4;
+                margin: 10mm;
+              }
+              
+              .invoice-container {
+                padding: 0;
+              }
             }
           </style>
         </head>
