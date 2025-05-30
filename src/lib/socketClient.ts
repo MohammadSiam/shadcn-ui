@@ -1,6 +1,7 @@
 "use client";
 
 import { io, Socket } from "socket.io-client";
+import { ChatMessage } from "./types";
 
 // Create a singleton socket instance
 let socket: Socket | null = null;
@@ -44,7 +45,10 @@ export const leaveRoom = (room: string) => {
   }
 };
 
-export const sendMessage = (room: string, message: any) => {
+export const sendMessage = (
+  room: string,
+  message: Omit<ChatMessage, "room">
+) => {
   const socket = getSocket();
   if (socket) {
     socket.emit("message", { ...message, room });

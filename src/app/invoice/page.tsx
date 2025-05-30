@@ -133,7 +133,11 @@ export default function InvoicePage() {
   };
 
   // Update product
-  const updateProduct = (id: string, field: keyof Product, value: any) => {
+  const updateProduct = (
+    id: string,
+    field: keyof Product,
+    value: string | number
+  ) => {
     setProducts(
       products.map((product) =>
         product.id === id ? { ...product, [field]: value } : product

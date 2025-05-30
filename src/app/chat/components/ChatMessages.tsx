@@ -2,17 +2,10 @@
 import { useEffect, useRef } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
-type Message = {
-  id: string;
-  text: string;
-  sender: string;
-  timestamp: Date;
-  room?: string;
-};
+import { ChatMessage } from "@/lib/types";
 
 interface ChatMessagesProps {
-  messages: Message[];
+  messages: ChatMessage[];
   currentUser: string;
 }
 

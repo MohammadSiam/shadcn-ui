@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { initializeSocket, joinRoom, sendMessage } from "@/lib/socketClient";
 
 // Define message type
-type Message = {
+type ChatMessage = {
   id: string;
   text: string;
   sender: string;
@@ -20,7 +20,7 @@ type Message = {
 
 export default function ChatPage() {
   const [socket, setSocket] = useState<Socket | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [isConnected, setIsConnected] = useState(false);
@@ -42,7 +42,7 @@ export default function ChatPage() {
       console.log("Disconnected from socket server");
     });
 
-    socketInstance.on("message", (message: Message) => {
+    socketInstance.on("message", (message: ChatMessage) => {
       if (message.room === room) {
         setMessages((prev) => [...prev, message]);
       }
@@ -81,12 +81,11 @@ export default function ChatPage() {
   // Send message handler
   const handleSendMessage = (text: string) => {
     if (socket && text.trim() && username && room && isJoined) {
-      const newMessage: Message = {
+      const newMessage: Omit<ChatMessage, "room"> = {
         id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         text,
         sender: username,
         timestamp: new Date(),
-        room,
       };
 
       sendMessage(room, newMessage);
